@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.toshiba.propark">
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.example.toshiba.propark.activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.toshiba.propark.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.ProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.ListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.BookActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.AvailableActivity"/>
+        <activity android:name="com.example.toshiba.propark.activity.BookAgainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.StatusActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.toshiba.propark.activity.AreaAvailableActivity"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>

@@ -9,8 +9,9 @@
     android:background="@drawable/login_page">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80FFD600">
 
 
         <ProgressBar
@@ -56,9 +57,9 @@
             android:id="@+id/nameid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans"
             android:textAlignment="center"
             android:textSize="32sp"
-            android:fontFamily="@font/noto_sans"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />

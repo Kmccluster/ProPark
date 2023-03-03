@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#8FFFD600">
 
         <TextView
             android:id="@+id/txt_area_list"
@@ -25,52 +26,52 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/button_curved"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textColor="@color/white"
             android:id="@+id/south_avenue_mall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="100dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_curved"
+            android:fontFamily="@font/noto_sans"
             android:text="@string/benjamin_bannekera"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="24sp"
-            android:fontFamily="@font/noto_sans"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_area_list" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/button_curved"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textColor="@color/white"
             android:id="@+id/samdareeya"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_curved"
+            android:fontFamily="@font/noto_sans"
             android:text="@string/benjamin_bannekerb"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="24sp"
-            android:fontFamily="@font/noto_sans"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/south_avenue_mall" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/button_curved"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textColor="@color/white"
             android:id="@+id/benjamin_bannekerb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_curved"
+            android:fontFamily="@font/noto_sans"
             android:text="@string/welcome_center"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="24sp"
-            android:fontFamily="@font/noto_sans"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/samdareeya" />

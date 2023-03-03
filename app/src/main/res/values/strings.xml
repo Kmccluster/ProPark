@@ -41,4 +41,11 @@
     <string name="book_extend_booking">Book/ Extend Booking</string>
     <string name="areas_list">Benjamin Banneker</string>
     <string name="samdareeya">B</string>
+    <string name="spinner">Spinner</string>
+    <string name="selected_item">Selected item:</string>
+    <string-array name="usertype">
+        <item>Student</item>
+        <item>Admin</item>
+        <item>Parking Lot Admin</item>
+    </string-array>
 </resources>

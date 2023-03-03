@@ -12,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#6DFFD600"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,9 +73,9 @@
             android:id="@+id/editTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="60dp"
             android:fontFamily="@font/noto_sans"
             android:inputType="number"
+            android:minWidth="60dp"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/To"
             app:layout_constraintEnd_toEndOf="parent"
@@ -136,7 +137,6 @@
             android:id="@+id/to_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="TextView"
             android:fontFamily="@font/noto_sans"
             android:padding="16dp"
             android:textSize="20sp"
@@ -145,7 +145,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.193"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="@+id/textView12" />
+            app:layout_constraintTop_toTopOf="@+id/textView12"
+            tools:text="TextView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

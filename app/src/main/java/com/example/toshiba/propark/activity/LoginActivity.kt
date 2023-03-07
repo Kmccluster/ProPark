@@ -11,7 +11,9 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toshiba.propark.Constants
 import com.example.toshiba.propark.R
+import com.example.toshiba.propark.model.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -77,6 +79,9 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString(Constants.email1, email)
                             editor.putString(Constants.password1, password)
                             editor.apply()
+                            //var databaseReference = FirebaseDatabase.getInstance().reference.child("Users")
+                           // databaseReference = databaseReference.child(fUser.uid)
+
                             val position: String = spinner2.getSelectedItem().toString()
                             Toast.makeText(
                                 applicationContext,

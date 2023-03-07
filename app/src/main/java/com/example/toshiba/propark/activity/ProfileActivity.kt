@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences.Editor
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -42,6 +43,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         thename = findViewById(R.id.nameid)
         currentUser = FirebaseAuth.getInstance().currentUser
+        Log.w("currentUser", currentUser!!.uid)
         databaseReference = FirebaseDatabase.getInstance().reference
         progressDialog = findViewById(R.id.progressbar)
         list_button = findViewById<View>(R.id.list) as Button
@@ -91,6 +93,8 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+
         databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var name = dataSnapshot.child("Users").child(currentUser!!.uid).child("name").getValue(String::class.java)!!

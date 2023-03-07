@@ -14,6 +14,7 @@ import com.example.toshiba.propark.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
+
 class LoginActivity : AppCompatActivity() {
     private var spinnerlist: Spinner? = null
     private var mAuth: FirebaseAuth? = null
@@ -35,70 +36,90 @@ class LoginActivity : AppCompatActivity() {
         val progressDialog: ProgressBar = findViewById(R.id.progressbar)
         progressDialog.visibility = View.GONE
         val users = resources.getStringArray(R.array.usertype)
-        val spinner = findViewById<Spinner>(R.id.spinner2)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(
-                this,
-                android.R.layout.simple_spinner_item, users
-            )
+        val spinner: Spinner = findViewById<Spinner>(R.id.spinner2)
+        ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
             spinner.adapter = adapter
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {
-                    Toast.makeText(
-                        this@LoginActivity,
-                        getString(R.string.selected_item) + " " +
-                                "" + usertype[position], Toast.LENGTH_SHORT
-                    ).show()
-                }
+        }
+        spinner.setSelection(0)
 
-                override fun onNothingSelected(parent: AdapterView<*>) {}
+        val spinnerList: Spinner = findViewById(R.id.spinner2)
+        spinner.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var intent: Intent
+
             }
-            submitButton!!.setOnClickListener {
-                val email = mEmailField!!.text.toString()
-                val password = mPasswordField!!.text.toString()
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(applicationContext, "Fields Are Empty", Toast.LENGTH_LONG).show()
-                } else {
-                    progressDialog.visibility = View.VISIBLE
-                    mAuth!!.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(this@LoginActivity) {
-                            progressDialog.visibility = View.GONE
-                            if (!it.isSuccessful) {
+
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        submitButton!!.setOnClickListener {
+            val email = mEmailField!!.text.toString()
+            val password = mPasswordField!!.text.toString()
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                Toast.makeText(applicationContext, "Fields Are Empty", Toast.LENGTH_LONG).show()
+            } else {
+                progressDialog.visibility = View.VISIBLE
+                mAuth!!.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this@LoginActivity) {
+                        progressDialog.visibility = View.GONE
+                        if (!it.isSuccessful) {
+                            Toast.makeText(
+                                applicationContext,
+                                "Email/password incorrect",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else {
+                            val editor = sharedPreferences!!.edit()
+                            editor.putString(Constants.userLoginStatus, Constants.isLoggedIn)
+                            editor.putString(Constants.email1, email)
+                            editor.putString(Constants.password1, password)
+                            editor.apply()
+                            val position: String = spinner2.getSelectedItem().toString()
+                            Toast.makeText(
+                                applicationContext,
+                                position,
+                                Toast.LENGTH_LONG).show()
+                            if (position == "Student" ) {
+                                intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+                                startActivity(intent)
                                 Toast.makeText(
                                     applicationContext,
-                                    "Email/password incorrect",
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            } else {
-                                val editor = sharedPreferences!!.edit()
-                                editor.putString(Constants.userLoginStatus, Constants.isLoggedIn)
-                                editor.putString(Constants.email1, email)
-                                editor.putString(Constants.password1, password)
-                                editor.apply()
-                                startActivity(
-                                    Intent(
-                                        this@LoginActivity,
-                                        ProfileActivity::class.java
-                                    )
-                                )
-                                finish()
+                                    "Profile Activity Unsuccessful",
+                                    Toast.LENGTH_LONG)
                             }
+                            if (position == "Admin" ) {
+                                intent = Intent(this@LoginActivity, AdminActivity::class.java)
+                                startActivity(intent)
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Admin Activity Successful",
+                                    Toast.LENGTH_LONG)
+                            }
+                            if (position == "Parking Lot Admin") {
+                                intent = Intent(this@LoginActivity, ParkingLotAdmin::class.java)
+                                startActivity(intent)
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Parking Lot Admin Successful",
+                                    Toast.LENGTH_LONG)
+                            }
+
+                            finish()
                         }
-                }
+                    }
             }
         }
-
-        fun onBackPressed() {
-            finish()
-        }
     }
 
-    private operator fun TextView.get(position: Int) {
-
-
+    override fun onBackPressed() {
+        finish()
     }
+}
+
+private operator fun TextView.get(position: Int) {
+
+
 }

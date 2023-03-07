@@ -17,8 +17,8 @@ import java.util.regex.Pattern
 
 
 class SignUpActivity : AppCompatActivity() {
-    private var name: EditText? = null
-    private var email: EditText? = null
+    var name: EditText? = null
+    var email: EditText? = null
     private var mobile: EditText? = null
     private var password: EditText? = null
     private var confpassword: EditText? = null
@@ -28,6 +28,7 @@ class SignUpActivity : AppCompatActivity() {
     private var userMobile: String? = null
     private var userPass: String? = null
     private var userCpass: String? = null
+
 
     //firebase
     private var mAuth: FirebaseAuth? = null

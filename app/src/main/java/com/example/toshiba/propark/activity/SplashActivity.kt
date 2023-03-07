@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
                 //the user is login
                 mAuth!!.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {
                     if (!it.isSuccessful) {
-                        Toast.makeText(applicationContext, "Email/password incorrect", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "error here", Toast.LENGTH_LONG).show()
                     } else {
                         startActivity(Intent(this, ProfileActivity::class.java))
                         finish()

@@ -50,7 +50,6 @@ class ProfileActivity : AppCompatActivity() {
         currentUser = FirebaseAuth.getInstance().currentUser
         //Log.w("currentUser", currentUser!!.uid)
         databaseReference = Firebase.firestore
-
         progressDialog = findViewById(R.id.progressbar)
         list_button = findViewById<View>(R.id.list) as Button
         signout_button = findViewById<View>(R.id.logout_button) as Button
@@ -108,10 +107,13 @@ class ProfileActivity : AppCompatActivity() {
                     Log.w("docs", doc.data.toString())
                     user = doc.toObject(User::class.java)
                     user!!.name?.let { Log.w("userObj", it) }
+                    progressDialog?.visibility = View.GONE
                 }
                 thename!!.text = user?.name ?: "unable to load"
 
+
             }
+
         //thename!!.text = user?.name ?: "unable to load"
 
         /*databaseReference!!.addValueEventListener(object : ValueEventListener {

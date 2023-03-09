@@ -16,6 +16,8 @@ import com.example.toshiba.propark.databinding.ActivityMainBinding
 import com.example.toshiba.propark.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 import java.util.regex.Pattern
 
@@ -64,7 +66,8 @@ class SignUpActivity : AppCompatActivity() {
                         if (fUser != null) {
                             mAuth!!.signInWithEmailAndPassword(userEmail!!, userPass!!).addOnCompleteListener {
                                 if (it.isSuccessful) {
-                                   var databaseReference = FirebaseDatabase.getInstance().reference;
+                                   val databaseReference = Firebase.firestore;
+                                    //var databaseReference = FirebaseDatabase.getInstance().reference;
                                     //databaseReference = databaseReference.child(fUser.uid)
 
 
@@ -75,7 +78,10 @@ class SignUpActivity : AppCompatActivity() {
                                     //user.password = userPass
                                     user.uid = fUser.uid
                                     //databaseReference.setValue(user)
-                                    databaseReference.child("User").child(fUser.uid).setValue(user)
+                                    databaseReference.collection("User").add(user)
+                                        .addOnSuccessListener { ref ->
+                                            Log.w("newUser", ref.id)
+                                        }
 
 
                                     Toast.makeText(this, "SignUp Successful! - " + fUser.uid, Toast.LENGTH_LONG).show()

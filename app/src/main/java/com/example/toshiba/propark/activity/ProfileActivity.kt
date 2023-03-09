@@ -16,9 +16,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.toshiba.propark.Constants
 import com.example.toshiba.propark.Constants.loginSharedPref
 import com.example.toshiba.propark.R
+import com.example.toshiba.propark.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 
@@ -31,7 +35,8 @@ class ProfileActivity : AppCompatActivity() {
     private var progressDialog: ProgressBar? = null
 
     private var currentUser: FirebaseUser? = null
-    var databaseReference: DatabaseReference? = null
+    var databaseReference: FirebaseFirestore? = null
+    private var user : User? = null
     var from = 0
     var to = 0
     var loc = 0
@@ -43,8 +48,9 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         thename = findViewById(R.id.nameid)
         currentUser = FirebaseAuth.getInstance().currentUser
-        Log.w("currentUser", currentUser!!.uid)
-        databaseReference = FirebaseDatabase.getInstance().reference
+        //Log.w("currentUser", currentUser!!.uid)
+        databaseReference = Firebase.firestore
+
         progressDialog = findViewById(R.id.progressbar)
         list_button = findViewById<View>(R.id.list) as Button
         signout_button = findViewById<View>(R.id.logout_button) as Button
@@ -94,8 +100,21 @@ class ProfileActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        databaseReference!!.collection("User").whereEqualTo("uid", currentUser!!.uid).get()
+            .addOnSuccessListener { documents ->
+                Log.w("docsLenght", documents.size().toString())
 
-        databaseReference!!.addValueEventListener(object : ValueEventListener {
+                for (doc in documents) {
+                    Log.w("docs", doc.data.toString())
+                    user = doc.toObject(User::class.java)
+                    user!!.name?.let { Log.w("userObj", it) }
+                }
+                thename!!.text = user?.name ?: "unable to load"
+
+            }
+        //thename!!.text = user?.name ?: "unable to load"
+
+        /*databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var name = dataSnapshot.child("Users").child(currentUser!!.uid).child("name").getValue(String::class.java)!!
                 name = name.toUpperCase(Locale.getDefault())
@@ -123,11 +142,11 @@ class ProfileActivity : AppCompatActivity() {
                 progressDialog?.visibility = View.GONE
                 //error occurred
             }
-        })
+        })*/
     }
 
     private fun resetParams() {
-        when (loc) {
+       /* when (loc) {
             1 -> {
                 databaseReference!!.child("Users").child(currentUser!!.uid).child("from").setValue(0)
                 databaseReference!!.child("Users").child(currentUser!!.uid).child("to").setValue(0)
@@ -149,7 +168,7 @@ class ProfileActivity : AppCompatActivity() {
                 databaseReference!!.child("Parking Area").child("Sd").child("Available").setValue(avv + 1)
                 databaseReference!!.child("Parking Area").child("Sd").child("Booked").setValue(bkk - 1)
             }
-        }
+        }*/
     }
 
     private fun updateStatus() {

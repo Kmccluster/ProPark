@@ -8,7 +8,6 @@ import android.widget.Button
 import com.example.toshiba.propark.CustomAdapter
 import com.example.toshiba.propark.ItemsViewModel
 import com.example.toshiba.propark.R
-import kotlinx.android.synthetic.main.activity_admin.*
 
 
 class AdminActivity : AppCompatActivity() {

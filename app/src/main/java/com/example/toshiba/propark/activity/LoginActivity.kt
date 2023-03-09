@@ -11,10 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toshiba.propark.Constants
 import com.example.toshiba.propark.R
-import com.example.toshiba.propark.model.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -82,7 +79,8 @@ class LoginActivity : AppCompatActivity() {
                             //var databaseReference = FirebaseDatabase.getInstance().reference.child("Users")
                            // databaseReference = databaseReference.child(fUser.uid)
 
-                            val position: String = spinner2.getSelectedItem().toString()
+                            var spinner2 = null
+                            val position: String = spinner2?.get().toString()
                             Toast.makeText(
                                 applicationContext,
                                 position,
@@ -124,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
     }
 }
 
-private operator fun TextView.get(position: Int) {
+private fun TextView.get() {
 
 
 }

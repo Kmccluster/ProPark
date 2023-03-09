@@ -42,7 +42,7 @@
     <string name="areas_list">Benjamin Banneker</string>
     <string name="samdareeya">B</string>
     <string name="spinner">Spinner</string>
-    <string name="selected_item">Selected item:</string>
+    <string name="upload_data">Upload data</string>
     <string-array name="usertype">
         <item>Student</item>
         <item>Admin</item>

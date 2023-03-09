@@ -1,8 +1,10 @@
 package com.example.toshiba.propark.activity
 
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -10,6 +12,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toshiba.propark.R
+import com.example.toshiba.propark.databinding.ActivityMainBinding
 import com.example.toshiba.propark.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -23,12 +26,12 @@ class SignUpActivity : AppCompatActivity() {
     private var mobile: EditText? = null
     private var password: EditText? = null
     private var confpassword: EditText? = null
-    private var signup: Button? = null
     private var userName: String? = null
     private var userEmail: String? = null
     private var userMobile: String? = null
     private var userPass: String? = null
     private var userCpass: String? = null
+    private var signUp: Button? = null
 
 
     //firebase
@@ -38,17 +41,19 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
+
         name = findViewById(R.id.name_field)
         email = findViewById(R.id.email_field)
         mobile = findViewById(R.id.mobile_field)
         password = findViewById(R.id.password_field)
         confpassword = findViewById(R.id.password_field2)
-        signup = findViewById(R.id.submit1)
+        signUp = findViewById(R.id.submit1)
+
         val progressDialog : ProgressBar = findViewById(R.id.progressbar)
         progressDialog.visibility = View.GONE
         //firebase
         mAuth = FirebaseAuth.getInstance()
-        signup?.setOnClickListener {
+        signUp?.setOnClickListener {
             if (isValidate()) {
                 //SignUp();
                 progressDialog.visibility = View.VISIBLE
@@ -71,6 +76,7 @@ class SignUpActivity : AppCompatActivity() {
                                     user.uid = fUser.uid
                                     //databaseReference.setValue(user)
                                     databaseReference.child("User").child(fUser.uid).setValue(user)
+
 
                                     Toast.makeText(this, "SignUp Successful! - " + fUser.uid, Toast.LENGTH_LONG).show()
                                     startActivity(Intent(applicationContext, ProfileActivity::class.java))
@@ -135,8 +141,7 @@ class SignUpActivity : AppCompatActivity() {
         val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
         return pattern.matcher(inputStr).matches()
     }
-
-    override fun onBackPressed() {
+   override fun onBackPressed() {
         finish()
     }
 }

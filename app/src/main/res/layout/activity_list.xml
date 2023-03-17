@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/south_avenue_mall"
+            android:id="@+id/benjamin_bannekera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@id/txt_area_list" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/samdareeya"
+            android:id="@+id/benjamin_bannekerb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -57,10 +57,10 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/south_avenue_mall" />
+            app:layout_constraintTop_toBottomOf="@id/benjamin_bannekera" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/benjamin_bannekerb"
+            android:id="@+id/welcome_center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -74,7 +74,7 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/samdareeya" />
+            app:layout_constraintTop_toBottomOf="@id/benjamin_bannekerb" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,16 +8,21 @@
     tools:context=".activity.ParkingLotAdmin">
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="196dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="147dp"
-        android:layout_marginBottom="506dp"
-        android:text="@string/booking_status"
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/noto_sans_bold"
+        android:text="Parking Locations"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="214dp"
+        android:layout_height="51dp"
+        android:text="Location"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="94dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

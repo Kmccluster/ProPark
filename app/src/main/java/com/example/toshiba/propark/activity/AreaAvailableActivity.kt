@@ -87,7 +87,7 @@ class AreaAvailableActivity : AppCompatActivity() {
                 } else if(areaName == "Sd") {
                     dref!!.child("Users").child(currentUser!!.uid).child("loc").setValue(3)
                 }
-                 if(!areaName.isNullOrEmpty()) {
+                if(!areaName.isNullOrEmpty()) {
                     dref!!.child("Parking Area").child(areaName).child("Available").setValue(av - 1)
                     dref!!.child("Parking Area").child(areaName).child("Booked").setValue(bk + 1)
                 }

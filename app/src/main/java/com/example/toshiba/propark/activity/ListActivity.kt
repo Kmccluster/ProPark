@@ -22,29 +22,29 @@ class ListActivity : AppCompatActivity() {
         f2 = ftime
         t1 = ttime
         t2 = ttime
-        val southAvenueMall = findViewById<View>(R.id.south_avenue_mall) as TextView
-        southAvenueMall.setOnClickListener {
-            val southAvenueMallintent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
-            southAvenueMallintent.putExtra("Area", "SAM")
-            southAvenueMallintent.putExtra("fromtime", ftime)
-            southAvenueMallintent.putExtra("totime", ttime)
-            startActivity(southAvenueMallintent)
+        val benjaminbannekera = findViewById<View>(R.id.benjamin_bannekera) as TextView
+        benjaminbannekera.setOnClickListener {
+            val benjaminbannekeraIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
+            benjaminbannekeraIntent.putExtra("Area", "SAM")
+            benjaminbannekeraIntent.putExtra("fromtime", ftime)
+            benjaminbannekeraIntent.putExtra("totime", ttime)
+            startActivity(benjaminbannekeraIntent)
         }
-        val samdareeya = findViewById<View>(R.id.samdareeya) as TextView
-        samdareeya.setOnClickListener {
-            val samdareeyaIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
-            samdareeyaIntent.putExtra("Area", "RC")
-            samdareeyaIntent.putExtra("fromtime", f1)
-            samdareeyaIntent.putExtra("totime", t1)
-            startActivity(samdareeyaIntent)
+        val benjaminbannekerb = findViewById<View>(R.id.benjamin_bannekerb) as TextView
+        benjaminbannekerb.setOnClickListener {
+            val benjaminbannekerbIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
+            benjaminbannekerbIntent.putExtra("Area", "RC")
+            benjaminbannekerbIntent.putExtra("fromtime", f1)
+            benjaminbannekerbIntent.putExtra("totime", t1)
+            startActivity(benjaminbannekerbIntent)
         }
-        val pvr_cinemas = findViewById<View>(R.id.benjamin_bannekerb) as TextView
-        pvr_cinemas.setOnClickListener {
-            val pvr_cinemasIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
-            pvr_cinemasIntent.putExtra("Area", "Sd")
-            pvr_cinemasIntent.putExtra("fromtime", f2)
-            pvr_cinemasIntent.putExtra("totime", t2)
-            startActivity(pvr_cinemasIntent)
+        val welcome_center = findViewById<View>(R.id.welcome_center) as TextView
+        welcome_center.setOnClickListener {
+            val welcome_centerIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
+            welcome_centerIntent.putExtra("Area", "Sd")
+            welcome_centerIntent.putExtra("fromtime", f2)
+            welcome_centerIntent.putExtra("totime", t2)
+            startActivity(welcome_centerIntent)
         }
     }
 

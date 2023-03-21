@@ -39,7 +39,7 @@ class ProfileActivity : AppCompatActivity() {
     private var user : User? = null
     var from = 0
     var to = 0
-    var loc = 0
+    var loc = ""
     var avv = 0
     var bkk = 0
 

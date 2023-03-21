@@ -43,6 +43,10 @@
     <string name="samdareeya">B</string>
     <string name="spinner">Spinner</string>
     <string name="upload_data">Upload data</string>
+    <string name="parking_lots">Parking Lots</string>
+    <string name="location_name">Location name</string>
+    <string name="availablespots">Availablespots</string>
+    <string name="add_location">Add Location</string>
     <string-array name="usertype">
         <item>Student</item>
         <item>Admin</item>

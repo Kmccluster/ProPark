@@ -1,5 +1,6 @@
 package com.example.toshiba.propark.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -32,6 +33,7 @@ class StatusActivity : AppCompatActivity() {
     private var from: Int? = 0
     private var to: Int? = 0
 
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Set the content of the activity to use the activity_main.xml layout file
@@ -43,6 +45,7 @@ class StatusActivity : AppCompatActivity() {
         xtoo = findViewById<View>(R.id.bookedto) as TextView
         tvLoc = findViewById<View>(R.id.location1) as TextView
         progressDialog = findViewById(R.id.progressbar)
+        progressDialog = findViewById(R.id.progressbar2)
         currentuser = FirebaseAuth.getInstance().currentUser
         databaseReference = Firebase.firestore
         databaseReference!!.collection("User").whereEqualTo("uid", currentuser!!.uid).get()
@@ -62,11 +65,26 @@ class StatusActivity : AppCompatActivity() {
                             progressDialog?.visibility = View.GONE
                             progressDialog?.visibility = View.GONE
                             progressDialog?.visibility = View.GONE
+                            progressDialog?.visibility = View.GONE
+                            progressDialog?.visibility = View.GONE
+                            progressDialog?.visibility = View.GONE
+
                         }
 
                             xname!!.text = user?.name ?: "unable to load"
                             xemail!!.text = user?.email ?: "unable to load"
                             xphone!!.text = user?.phoneNumber ?: "unable to load"
+
+                            xfrom!!.text = user?.from.toString()
+                            xtoo!!.text = user?.to.toString()
+                            tvLoc!!.text = user?.loc ?: "Unable to load"
+
+                        progressDialog?.visibility = View.GONE
+                        progressDialog?.visibility = View.GONE
+                        progressDialog?.visibility = View.GONE
+                        progressDialog?.visibility = View.GONE
+                        progressDialog?.visibility = View.GONE
+                        progressDialog?.visibility = View.GONE
                         }
                         if (currentuser != null) {
                             databaseUsers = FirebaseDatabase.getInstance().reference

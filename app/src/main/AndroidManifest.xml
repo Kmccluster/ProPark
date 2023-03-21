@@ -28,9 +28,6 @@
             android:name=".activity.AdminActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ParkingLotAdmin"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

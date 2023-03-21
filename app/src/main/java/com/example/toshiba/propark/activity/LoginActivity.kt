@@ -76,40 +76,6 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString(Constants.email1, email)
                             editor.putString(Constants.password1, password)
                             editor.apply()
-                            //var databaseReference = FirebaseDatabase.getInstance().reference.child("Users")
-                           // databaseReference = databaseReference.child(fUser.uid)
-
-                            var spinner2 = null
-                            val position: String = spinner2?.get().toString()
-                            Toast.makeText(
-                                applicationContext,
-                                position,
-                                Toast.LENGTH_LONG).show()
-                            if (position == "Student" ) {
-                                intent = Intent(this@LoginActivity, ProfileActivity::class.java)
-                                startActivity(intent)
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Profile Activity Unsuccessful",
-                                    Toast.LENGTH_LONG)
-                            }
-                            if (position == "Admin" ) {
-                                intent = Intent(this@LoginActivity, AdminActivity::class.java)
-                                startActivity(intent)
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Admin Activity Successful",
-                                    Toast.LENGTH_LONG)
-                            }
-                            if (position == "Parking Lot Admin") {
-                                intent = Intent(this@LoginActivity, ParkingLotAdmin::class.java)
-                                startActivity(intent)
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Parking Lot Admin Successful",
-                                    Toast.LENGTH_LONG)
-                            }
-
                             finish()
                         }
                     }
@@ -122,7 +88,4 @@ class LoginActivity : AppCompatActivity() {
     }
 }
 
-private fun TextView.get() {
 
-
-}

@@ -5,24 +5,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#85FFAB00"
-    tools:context=".activity.ParkingLotAdmin">
+    tools:context="com.example.toshiba.propark.activity.ParkingLotAdmin">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/noto_sans_bold"
-        android:text="Parking Locations"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="27dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#79FFD600">
 
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="214dp"
-        android:layout_height="51dp"
-        android:text="Location"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="94dp" />
 
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toTopOf="@+id/submit1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.45" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_bold"
+            android:text="@string/parking_lots"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/name_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:hint="@string/location_name"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <EditText
+            android:id="@+id/available_spot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:hint="@string/availablespots"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_field" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/button_curved"
+            android:fontFamily="cursive"
+            android:padding="10dp"
+            android:text="@string/add_location"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/available_spot"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

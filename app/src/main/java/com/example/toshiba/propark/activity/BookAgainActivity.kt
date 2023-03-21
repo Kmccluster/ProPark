@@ -39,8 +39,8 @@ class BookAgainActivity : AppCompatActivity() {
         }
         databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                fro = dataSnapshot.child("Users").child(currentuser!!.uid).child("from").getValue(Int::class.java)!!
-                tt = dataSnapshot.child("Users").child(currentuser!!.uid).child("to").getValue(Int::class.java)!!
+                fro = dataSnapshot.child("User").child(currentuser!!.uid).child("from").getValue(Int::class.java)!!
+                tt = dataSnapshot.child("User").child(currentuser!!.uid).child("to").getValue(Int::class.java)!!
                 fromView?.text = Integer.toString(fro) + "Hrs"
                 toView?.text = Integer.toString(tt) + "Hrs"
             }
@@ -54,7 +54,7 @@ class BookAgainActivity : AppCompatActivity() {
             val h = hours!!.text.toString()
             hrs = h.toInt()
             if (hrs + tt <= 24) {
-                databaseReference1!!.child("Users").child(currentuser!!.uid).child("to").setValue(hrs + tt)
+                databaseReference1!!.child("User").child(currentuser!!.uid).child("to").setValue(hrs + tt)
                 Toast.makeText(applicationContext, "Booking extended successfully!", Toast.LENGTH_LONG).show()
                 val backIntent = Intent(this@BookAgainActivity, ProfileActivity::class.java)
                 startActivity(backIntent)

@@ -52,4 +52,20 @@
         <item>Admin</item>
         <item>Parking Lot Admin</item>
     </string-array>
+    <string name="users">USERS</string>
+    <string name="parking_spot">PARKING SPOT</string>
+    <string name="area_status">AREA STATUS</string>
+    <string name="spot_one">BBA SPOT 1</string>
+    <string name="spot_two">BBA SPOT 2</string>
+    <string name="spot_three">BBA SPOT 3</string>
+    <string name="spot_four">BBB SPOT 1</string>
+    <string name="spot_five">BBB SPOT 2</string>
+    <string name="reservespots">RESERVE SPOTS</string>
+    <string name="fromreserve">FromReserve</string>
+    <string name="toReserve">toReserve</string>
+    <string name="reserve">RESERVE</string>
+    <string name="spot_six">BBB SPOT 3</string>
+    <string name="spot_seven">WC SPOT 1</string>
+    <string name="spot_eight">WC SPOT 2</string>
+    <string name="spot_nine">WC SPOT 3</string>
 </resources>

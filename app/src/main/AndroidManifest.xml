@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.AdminActivity"
+            android:name=".activity.UsersActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"
@@ -55,6 +55,27 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AreaAvailableActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdminActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ParkingLotAdmin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AreaListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AreaStatusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReserveSpotsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReserveBookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReserveAvailableActivity"
             android:screenOrientation="portrait" />
     </application>
 

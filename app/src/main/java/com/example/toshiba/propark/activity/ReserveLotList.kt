@@ -1,5 +1,6 @@
 package com.example.toshiba.propark.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +9,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toshiba.propark.R
 
-class ListActivity : AppCompatActivity() {
+class ReserveLotList : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
+        setContentView(R.layout.activity_reservelotlist)
         val intent = intent
         val ftime = intent.getIntExtra("fromtime", 0)
         ftime?.let { Log.w("from", it.toString()) }
@@ -26,7 +28,7 @@ class ListActivity : AppCompatActivity() {
         t2 = ttime
         val benjaminbannekera = findViewById<View>(R.id.benjamin_bannekera) as TextView
         benjaminbannekera.setOnClickListener {
-            val benjaminbannekeraIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
+            val benjaminbannekeraIntent = Intent(this@ReserveLotList, ReserveSpotsActivity::class.java)
             benjaminbannekeraIntent.putExtra("Area", "Benjamin Banneker A")
             benjaminbannekeraIntent.putExtra("fromtime", ftime)
             benjaminbannekeraIntent.putExtra("totime", ttime)
@@ -34,7 +36,7 @@ class ListActivity : AppCompatActivity() {
         }
         val benjaminbannekerb = findViewById<View>(R.id.benjamin_bannekerb) as TextView
         benjaminbannekerb.setOnClickListener {
-            val benjaminbannekerbIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
+            val benjaminbannekerbIntent = Intent(this@ReserveLotList, ReserveSpotsActivity::class.java)
             benjaminbannekerbIntent.putExtra("Area", "Benjamin Banneker B")
             benjaminbannekerbIntent.putExtra("fromtime", f1)
             benjaminbannekerbIntent.putExtra("totime", t1)
@@ -42,7 +44,7 @@ class ListActivity : AppCompatActivity() {
         }
         val welcome_center = findViewById<View>(R.id.welcome_center) as TextView
         welcome_center.setOnClickListener {
-            val welcome_centerIntent = Intent(this@ListActivity, AreaAvailableActivity::class.java)
+            val welcome_centerIntent = Intent(this@ReserveLotList, ReserveSpotsActivity::class.java)
             welcome_centerIntent.putExtra("Area", "Welcome Center")
             welcome_centerIntent.putExtra("fromtime", f2)
             welcome_centerIntent.putExtra("totime", t2)

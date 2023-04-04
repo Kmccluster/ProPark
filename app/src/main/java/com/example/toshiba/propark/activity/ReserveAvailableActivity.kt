@@ -13,15 +13,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.toshiba.propark.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class AvailableActivity : AppCompatActivity() {
+class ReserveAvailableActivity : AppCompatActivity() {
+    val db = Firebase.firestore
     var databaseReference: FirebaseFirestore? = null
     private var progressDialog: ProgressBar? = null
-    var area: TextView? = null
+    var spot: TextView? = null
     var av = 0
     var bk = 0
     private var currentUser: FirebaseUser? = null
@@ -30,28 +33,32 @@ class AvailableActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_available)
+        setContentView(R.layout.activity_reserveavailable)
         //databaseReference = FirebaseDatabase.getInstance().reference
         val intent = intent
         val ftime = intent.getIntExtra("fromtime", 0)
         val ttime = intent.getIntExtra("totime", 0)
-        val areaName = intent.getStringExtra("Area")
+        val spotID = intent.getStringExtra("spotID")
+        val areaName = intent.getStringExtra("areaName")
+        var docId = ""
         //ftime?.let { Log.w("from", it.toString()) }
-        area = findViewById<View>(R.id.availability_status) as TextView
+        spot = findViewById<View>(R.id.availability_status) as TextView
         currentUser = FirebaseAuth.getInstance().currentUser
         dref = FirebaseDatabase.getInstance().reference
         progressDialog = findViewById(R.id.progressbar)
         databaseReference = Firebase.firestore
-        databaseReference!!.collection("Parking Lot").whereEqualTo("areaName", areaName).get()
+        databaseReference!!.collection("Parking Lot").document(areaName.toString())
+            .collection("spotID").whereEqualTo("spotID", spotID).get()
             .addOnSuccessListener { documents ->
                 Log.w("docsLenght", documents.size().toString())
                 for (doc in documents) {
                     Log.w("docData", doc.data.toString())
                     av = doc.getLong("Available")?.toInt() ?: 0
                     bk = doc.getLong("Booked")?.toInt() ?: 0
+                    docId = doc.id
                 }
                 progressDialog?.visibility = View.GONE
-                area!!.text = av?.toString()
+                spot!!.text = av?.toString()
                 progressDialog?.visibility = View.GONE
 
                 /*override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -65,53 +72,74 @@ class AvailableActivity : AppCompatActivity() {
              */
             }
         val bookAndPay = findViewById<View>(R.id.booknpay) as Button
-
         bookAndPay.setOnClickListener {
+            Log.w("avail", av.toString())
             if (av == 0) {
                 Toast.makeText(
                     applicationContext,
-                    "NO SLOTS AVAILABLE FOR BOOKING!",
+                    "SPOT NOT AVAILABLE!",
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                dref!!.child("User").child(currentUser!!.uid).child("from").setValue(ftime)
-                dref!!.child("User").child(currentUser!!.uid).child("to").setValue(ttime)
+                  //  dref!!.child("User").child(currentUser!!.uid).child("from").setValue(ftime)
+                 //   dref!!.child("User").child(currentUser!!.uid).child("to").setValue(ttime)
                 //databaseReference!!.collection("User").whereEqualTo("to", to).setValue(ttime)
-                if (areaName == "Benjamin Banneker A") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(1)
-                } else if (areaName == "Benjamin Banneker B") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(2)
-                } else if (areaName == "Welcome Center") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(3)
+               /* if (spotID == "BBA SPOT 1") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(1)
+                } else if (spotID == "BBA SPOT 2") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(2)
+                } else if (spotID == "BBA SPOT 3") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(3)
                 }
-                if (!areaName.isNullOrEmpty()) {
-                    dref!!.child("Parking Lot").child(areaName).child("Available").setValue(av - 1)
-                    dref!!.child("Parking Lot").child(areaName).child("Booked").setValue(bk + 1)
+                else if (spotID == "BBB SPOT 1") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(4)
+                } else if (spotID == "BBB SPOT 2") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(5)
+                } else if (spotID == "BBB SPOT 3") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(6)
+                } else if (spotID == "WC SPOT 1") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(7)
+                } else if (spotID == "WC SPOT 2") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(8)
+                } else if (spotID == "WC SPOT 3") {
+                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(9)
+
+                */
+
+
+
+                dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(spotID)
+                if (!spotID.isNullOrEmpty()) {
+                    /*dref!!.child("Parking Lot").child(areaName.toString())
+                        .child("spotID").child(docId).child("Available").setValue(av - 1)
+                    dref!!.child("Parking Lot").child(areaName.toString())
+                        .child("spotID").child(docId).child("Booked").setValue(bk + 1)
+
+                     */
+                    db.collection("Parking Lot").document(areaName.toString())
+                        .collection("spotID").document(docId)
+                        .update("Available",FieldValue.increment(-1))
+                    db.collection("Parking Lot").document(areaName.toString())
+                        .collection("spotID").document(docId)
+                        .update("Booked",FieldValue.increment(1))
                 }
 
-                Toast.makeText(applicationContext, "Booking Successful!", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "SPOT RESERVED!", Toast.LENGTH_LONG).show()
                 val back = Intent(this, ProfileActivity::class.java)
                 startActivity(back)
             }
+            val backButton = findViewById<View>(R.id.back) as Button
+            backButton.setOnClickListener {
+                val backIntent = Intent(this, ProfileActivity::class.java)
+                startActivity(backIntent)
+            }
+            val back1 = findViewById<View>(R.id.back1) as Button
+            back1.setOnClickListener {
+                val back1Intent = Intent(this, ReserveSpotsActivity::class.java)
+                startActivity(back1Intent)
+            }
 
-        }
-        val backButton = findViewById<View>(R.id.back) as Button
-        backButton.setOnClickListener {
-            Log.w("back-clicked", "true")
-            val backIntent = Intent(this@AvailableActivity, ProfileActivity::class.java)
-            startActivity(backIntent)
-            finish()
 
-        }
-        val back1 = findViewById<Button>(R.id.back1)
-        back1.setOnClickListener {
-            val back1Intent = Intent(this@AvailableActivity, ListActivity::class.java)
-            startActivity(back1Intent)
-        }
-        val reserve = findViewById<View>(R.id.reserve) as Button
-        reserve.setOnClickListener {
-            val reserveIntent = Intent(this, ReserveBookActivity::class.java)
-            startActivity(reserveIntent)
         }
     }
 }

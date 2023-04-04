@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_page"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.toshiba.propark.activity.AvailableActivity">
+    tools:context="com.example.toshiba.propark.activity.ReserveAvailableActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +36,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/noto_sans_bold"
             android:padding="20dp"
-            android:text="AVAILABLE SLOTS "
+            android:text="AVAILABLE"
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -89,21 +89,6 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/reserve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/button_curved"
-            android:fontFamily="@font/noto_sans"
-            android:padding="15dp"
-            android:text="@string/reserve"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/back1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/back"

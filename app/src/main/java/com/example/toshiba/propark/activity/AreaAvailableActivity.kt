@@ -113,7 +113,6 @@ class AreaAvailableActivity : AppCompatActivity() {
             backButton.setOnClickListener {
                 val backIntent = Intent(this, ProfileActivity::class.java)
                 startActivity(backIntent)
-                finish()
             }
             val back1 = findViewById<View>(R.id.back1) as Button
             back1.setOnClickListener {
@@ -121,6 +120,10 @@ class AreaAvailableActivity : AppCompatActivity() {
                 startActivity(back)
             }
         }
+
+        }
+        override fun onBackPressed() {
+        finish()
     }
 }
 

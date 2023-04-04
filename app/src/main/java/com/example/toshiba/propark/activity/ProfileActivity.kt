@@ -1,5 +1,6 @@
 package com.example.toshiba.propark.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -19,7 +20,6 @@ import com.example.toshiba.propark.R
 import com.example.toshiba.propark.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,6 +29,7 @@ import java.util.*
 class ProfileActivity : AppCompatActivity() {
 
     private var list_button: Button? = null
+    private var reserve_button: Button? = null
     private var signout_button: Button? = null
     private var status: Button? = null
     private var thename: TextView? = null
@@ -43,6 +44,7 @@ class ProfileActivity : AppCompatActivity() {
     var avv = 0
     var bkk = 0
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -52,6 +54,7 @@ class ProfileActivity : AppCompatActivity() {
         databaseReference = Firebase.firestore
         progressDialog = findViewById(R.id.progressbar)
         list_button = findViewById<View>(R.id.list) as Button
+        reserve_button = findViewById<View>(R.id.reserve) as Button
         signout_button = findViewById<View>(R.id.logout_button) as Button
         status = findViewById<View>(R.id.statusbutton) as Button
         list_button!!.setOnClickListener {
@@ -61,6 +64,10 @@ class ProfileActivity : AppCompatActivity() {
             } else {
                 startActivity(listIntent)
             }
+        }
+        reserve_button!!.setOnClickListener {
+            val intent = Intent(this@ProfileActivity, ReserveSpotsActivity::class.java)
+            startActivity(intent)
         }
         status!!.setOnClickListener {
             val intent = Intent(this@ProfileActivity, StatusActivity::class.java)

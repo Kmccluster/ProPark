@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_page"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.toshiba.propark.activity.AvailableActivity">
+    tools:context="com.example.toshiba.propark.activity.AreaStatusActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +15,35 @@
         android:background="#7AFFD600"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/booked_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/noto_sans"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_av_slots2" />
+
+        <TextView
+            android:id="@+id/txt_av_slots2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="176dp"
+            android:fontFamily="@font/noto_sans_bold"
+            android:padding="20dp"
+            android:text="BOOKED SLOTS"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -57,27 +86,10 @@
             app:layout_constraintTop_toBottomOf="@id/txt_av_slots" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/booknpay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/button_curved"
-            android:padding="15dp"
-            android:text="@string/book_and_pay"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/reserve"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/availability_status"
-            app:layout_constraintVertical_bias="0.052" />
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/button_curved"
             android:fontFamily="@font/noto_sans"
             android:padding="15dp"
@@ -85,22 +97,6 @@
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@id/back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/reserve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/button_curved"
-            android:fontFamily="@font/noto_sans"
-            android:padding="15dp"
-            android:text="@string/reserve"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/back1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
@@ -120,8 +116,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="1.0" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,7 +63,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
             spotthreeIntent.putExtra("totime", t2)
             startActivity(spotthreeIntent)
         }
-    val spotfour = findViewById<View>(R.id.spot_four) as TextView
+        val spotfour = findViewById<View>(R.id.spot_four) as TextView
         spotfour.setOnClickListener {
         val spotfourIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotfourIntent.putExtra("areaName", "Benjamin Banneker B")

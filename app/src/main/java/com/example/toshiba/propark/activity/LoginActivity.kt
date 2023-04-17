@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 progressDialog.visibility = View.VISIBLE
                 mAuth!!.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this@LoginActivity) {
+                    .addOnCompleteListener(this@LoginActivity) { it ->
                         progressDialog.visibility = View.GONE
                         if (!it.isSuccessful) {
                             Toast.makeText(
@@ -68,18 +68,21 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.LENGTH_LONG
                             ).show()
                         } else {
+
                             //val fUser = task.result!!.user
                             //Log.w("user", mEmailField ?: "a")
                            // Log.w("pass", mPasswordField ?: "h")
                             mAuth!!.signInWithEmailAndPassword(email, password)
                                 .addOnCompleteListener {
                                     if (it.isSuccessful) {
+
                                         //val databaseReference = Firebase.firestore;
                                         //var databaseReference = FirebaseDatabase.getInstance().reference;
                                         //databaseReference = databaseReference.child(fUser.uid)
 
 
                                         //databaseReference.setValue(user)
+                                        Log.w("currentUser", currentUser.toString())
                                         databaseReference!!.collection("User")
                                             .whereEqualTo("uid", currentUser!!.uid).get()
                                             .addOnSuccessListener { docs ->
@@ -94,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
                                                     startActivity(adminactivityintent)
                                                 }
                                                 if (role == "ParkingAdmin") {
-                                                    val parkingadminintent = (Intent(this@LoginActivity, ParkingLotAdmin::class.java));
+                                                    val parkingadminintent = (Intent(this@LoginActivity, AdminParkingActivity::class.java));
                                                     startActivity(parkingadminintent)
                                                 }
                                                 val editor = sharedPreferences!!.edit()

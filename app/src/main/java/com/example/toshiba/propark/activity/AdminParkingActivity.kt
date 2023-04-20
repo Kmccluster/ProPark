@@ -61,7 +61,7 @@ class AdminParkingActivity : AppCompatActivity() {
             startActivity(intent)
         }
         edit_locations!!.setOnClickListener {
-                    val listIntent = Intent(this@AdminParkingActivity, EditLocationActivity::class.java)
+                    val listIntent = Intent(this@AdminParkingActivity, EditLotActivity::class.java)
                     startActivity(listIntent)
                 }
     }

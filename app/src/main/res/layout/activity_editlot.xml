@@ -5,30 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_page"
-    tools:context="com.example.toshiba.propark.activity.ParkingLotAdmin">
+    tools:ignore="ExtraText">
+    tools:context="com.example.toshiba.propark.activity.EditLot">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#79FFD600"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="-162dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-76dp">
 
+
+        <EditText
+            android:id="@+id/bookedspots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:hint="Booked Spots"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/availablespots" />
+
+        <Button
+            android:id="@+id/editlotbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="147dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="147dp"
+            android:fontFamily="cursive"
+            android:text="Update Lot"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/availablespots" />
 
         <EditText
             android:id="@+id/newlocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="72dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/noto_sans"
             android:hint="New location name"
             android:inputType="none|text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
         <EditText
             android:id="@+id/availablespots"
@@ -50,28 +80,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans_bold"
-            android:text="@string/parking_lots"
+            android:text="Edit Lots"
             android:textAlignment="center"
             android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <Button
-            android:id="@+id/addlocationbutton"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="409dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="147dp"
-            android:layout_marginTop="124dp"
-            android:layout_marginEnd="147dp"
-            android:fontFamily="cursive"
-            android:text="@string/add_location"
-            android:textColor="@color/white"
+            android:layout_marginTop="92dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/availablespots" />
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

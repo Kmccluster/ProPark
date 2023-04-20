@@ -86,6 +86,12 @@
         <activity
             android:name=".activity.ParkingLotListActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EditLotActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EditProfileActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

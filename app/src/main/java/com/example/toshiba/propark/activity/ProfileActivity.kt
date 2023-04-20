@@ -32,6 +32,7 @@ class ProfileActivity : AppCompatActivity() {
     private var reserve_button: Button? = null
     private var signout_button: Button? = null
     private var status: Button? = null
+    private var editprofile: Button? = null
     private var thename: TextView? = null
     private var progressDialog: ProgressBar? = null
 
@@ -57,6 +58,7 @@ class ProfileActivity : AppCompatActivity() {
         reserve_button = findViewById<View>(R.id.reserve) as Button
         signout_button = findViewById<View>(R.id.logout_button) as Button
         status = findViewById<View>(R.id.statusbutton) as Button
+        editprofile = findViewById<View>(R.id.editprofile) as Button
         list_button!!.setOnClickListener {
             val listIntent = Intent(this@ProfileActivity, BookActivity::class.java)
             if (!(from == 0 && to == 0)) {
@@ -71,6 +73,10 @@ class ProfileActivity : AppCompatActivity() {
         }
         status!!.setOnClickListener {
             val intent = Intent(this@ProfileActivity, StatusActivity::class.java)
+            startActivity(intent)
+        }
+        editprofile!!.setOnClickListener {
+            val intent = Intent(this@ProfileActivity, EditProfileActivity::class.java)
             startActivity(intent)
         }
         signout_button!!.setOnClickListener { //Log out action

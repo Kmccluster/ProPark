@@ -91,7 +91,7 @@ class ParkingLotAdmin : AppCompatActivity() {
                                             startActivity(
                                                 Intent(
                                                     applicationContext,
-                                                    ParkingLotAdmin::class.java
+                                                    AdminParkingActivity::class.java
                                                 )
                                             )
                                             finish()

@@ -3,23 +3,18 @@ package com.example.toshiba.propark.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.toshiba.propark.R
 import com.example.toshiba.propark.model.Location
-import com.example.toshiba.propark.model.User
 import com.example.toshiba.propark.model.spotID
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.regex.Pattern
 
 class ParkingLotAdmin : AppCompatActivity() {
     var locationname: EditText? = null
@@ -45,7 +40,7 @@ class ParkingLotAdmin : AppCompatActivity() {
 
         locationname = findViewById(R.id.newlocation)
         //bkspots = findViewById(R.id.bookedpsots)
-        avspots = findViewById(R.id.availablespots)
+        avspots = findViewById(R.id.newspots)
         addlocation = findViewById(R.id.addlocationbutton)
         currentUser = FirebaseAuth.getInstance().currentUser
         databaseReference = Firebase.firestore

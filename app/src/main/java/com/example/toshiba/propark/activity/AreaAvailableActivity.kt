@@ -53,8 +53,8 @@ class AreaAvailableActivity : AppCompatActivity() {
                 Log.w("docsLenght", documents.size().toString())
                 for (doc in documents) {
                     Log.w("docData", doc.data.toString())
-                    av = doc.getLong("Available")?.toInt() ?: 0
-                    bk = doc.getLong("Booked")?.toInt() ?: 0
+                    av = doc.getLong("available")?.toInt() ?: 0
+                    bk = doc.getLong("booked")?.toInt() ?: 0
                     record = doc.reference
                 }
                 progressDialog?.visibility = View.GONE
@@ -101,8 +101,8 @@ class AreaAvailableActivity : AppCompatActivity() {
                     dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(3)
                 }
                 if (!areaName.isNullOrEmpty()) {
-                    record?.update("Available", FieldValue.increment(-1))
-                    record?.update("Booked", FieldValue.increment(1))
+                    record?.update("available", FieldValue.increment(-1))
+                    record?.update("booked", FieldValue.increment(1))
                 }
 
                 Toast.makeText(applicationContext, "Booking Successful!", Toast.LENGTH_LONG).show()
@@ -126,69 +126,3 @@ class AreaAvailableActivity : AppCompatActivity() {
         finish()
     }
 }
-
-/*
-        databaseReference!!.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                progressDialog.visibility = View.GONE
-                if (!areaName.isNullOrEmpty()) {
-                    val spot = dataSnapshot.child("Parking Lot").child(areaName).child("Available")
-                        .getValue(Int::class.java)!!
-                    Log.d("TAG", "onvaluereceival: $spot")
-                    area!!.text = Integer.toString(spot) + " Slots"
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                progressDialog.visibility = View.GONE
-                Log.e("TAG", "Failed to read value.")
-            }
-        })
-
-
-       /* val backButton = findViewById<View>(R.id.back) as Button
-        backButton.setOnClickListener {
-            val backIntent = Intent(this, ProfileActivity::class.java)
-            startActivity(backIntent)
-            finish()
-        }
-        val back1 = findViewById<View>(R.id.back1) as Button
-        back1.setOnClickListener {
-            val back = Intent(this, ListActivity::class.java)
-            startActivity(back)
-        }
-       /* val bookAndPay = findViewById<View>(R.id.booknpay) as Button
-        bookAndPay.setOnClickListener {
-            if (av == 0) {
-                Toast.makeText(
-                    applicationContext,
-                    "NO SLOTS AVAILABLE FOR BOOKING!",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                dref!!.child("User").child(currentUser!!.uid).child("from").setValue(ftime)
-                dref!!.child("User").child(currentUser!!.uid).child("to").setValue(ttime)
-                //databaseReference!!.collection("User").whereEqualTo("to", to).setValue(ttime)
-                if (areaName == "Benjamin Banneker A") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(1)
-                } else if (areaName == "Benjamin Banneker B") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(2)
-                } else if (areaName == "Welcome Center") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(3)
-                }
-                if (!areaName.isNullOrEmpty()) {
-                    dref!!.child("Parking Lot").child(areaName).child("Available").setValue(av - 1)
-                    dref!!.child("Parking Lot").child(areaName).child("Booked").setValue(bk + 1)
-                }
-
-                Toast.makeText(applicationContext, "Booking Successful!", Toast.LENGTH_LONG).show()
-                val back = Intent(this, ProfileActivity::class.java)
-                startActivity(back)
-            }
-        }
-    }
-
-    override fun onBackPressed() {
-        finish()
-    }
-}*/

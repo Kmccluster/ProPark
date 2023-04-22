@@ -37,6 +37,7 @@ class EditProfileActivity : AppCompatActivity() {
     private var sEmail: TextView? = null
     private var sPhone: TextView? = null
     private var updateprofile: Button? = null
+    private var deleteprofilebutton: Button? = null
     var record : DocumentReference? = null
     var dref: DatabaseReference? = null
 
@@ -163,22 +164,6 @@ class EditProfileActivity : AppCompatActivity() {
                              dref!!.child("User").child(currentuser!!.uid).child("phoneNumber").setValue(sPhone)
 
                         Toast.makeText(this, "Updated Successfully!", Toast.LENGTH_SHORT).show()
-
-                       // databaseReference!!.collection("User").whereEqualTo("uid", currentuser!!.uid).get().addOnSuccessListener { docs ->
-
-                         //   for (doc in docs)
-                          //  {
-                                //val editMap = mapOf(
-                                 //   "name" to name,
-                                  //  "email" to email,
-                                   // "phoneNumber" to phone
-                               // )
-                             //   val ref = doc.reference
-                           //   ref.update(mapOf("name" to etName, "email" to etEmail, "phoneNumber" to etPhone))
-                          //  }
-                           // dref!!.child("User").child(currentuser!!.uid).child("name").setValue(sName)
-                          //  dref!!.child("User").child(currentuser!!.uid).child("email").setValue(sEmail)
-                          //  dref!!.child("User").child(currentuser!!.uid).child("phoneNumber").setValue(sPhone)
 
                         }
                     }

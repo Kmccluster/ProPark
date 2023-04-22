@@ -56,8 +56,8 @@ class AreaStatusActivity : AppCompatActivity() {
                 Log.w("docsLenght", documents.size().toString())
                 for (doc in documents) {
                     Log.w("docData", doc.data.toString())
-                    av = doc.getLong("Available")?.toInt() ?: 0
-                    bk = doc.getLong("Booked")?.toInt() ?: 0
+                    av = doc.getLong("available")?.toInt() ?: 0
+                    bk = doc.getLong("booked")?.toInt() ?: 0
                     record = doc.reference
                 }
                 progressDialog?.visibility = View.GONE
@@ -66,15 +66,6 @@ class AreaStatusActivity : AppCompatActivity() {
                 progressDialog?.visibility = View.GONE
                 progressDialog?.visibility = View.GONE
 
-                /*override fun onDataChange(dataSnapshot: DataSnapshot) {
-                progressDialog.visibility = View.GONE
-                if (!areaName.isNullOrEmpty()) {
-                    av = dataSnapshot.child("Parking Lot").child(areaName).child("Available")
-                        .getValue(Int::class.java)!!
-                    bk = dataSnapshot.child("Parking Lot").child(areaName).child("Booked")
-                        .getValue(Int::class.java)!!
-
-             */
                 val backButton = findViewById<View>(R.id.back) as Button
                 backButton.setOnClickListener {
                     val backIntent = Intent(this, AdminActivity::class.java)

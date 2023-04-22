@@ -53,23 +53,13 @@ class ReserveAvailableActivity : AppCompatActivity() {
                 Log.w("docsLenght", documents.size().toString())
                 for (doc in documents) {
                     Log.w("docData", doc.data.toString())
-                    av = doc.getLong("Available")?.toInt() ?: 0
-                    bk = doc.getLong("Booked")?.toInt() ?: 0
+                    av = doc.getLong("available")?.toInt() ?: 0
+                    bk = doc.getLong("booked")?.toInt() ?: 0
                     docId = doc.id
                 }
                 progressDialog?.visibility = View.GONE
                 spot!!.text = av?.toString()
                 progressDialog?.visibility = View.GONE
-
-                /*override fun onDataChange(dataSnapshot: DataSnapshot) {
-                progressDialog.visibility = View.GONE
-                if (!areaName.isNullOrEmpty()) {
-                    av = dataSnapshot.child("Parking Lot").child(areaName).child("Available")
-                        .getValue(Int::class.java)!!
-                    bk = dataSnapshot.child("Parking Lot").child(areaName).child("Booked")
-                        .getValue(Int::class.java)!!
-
-             */
             }
         val bookAndPay = findViewById<View>(R.id.booknpay) as Button
         bookAndPay.setOnClickListener {
@@ -80,48 +70,16 @@ class ReserveAvailableActivity : AppCompatActivity() {
                     "SPOT NOT AVAILABLE!",
                     Toast.LENGTH_LONG
                 ).show()
-            } else {
-                  //  dref!!.child("User").child(currentUser!!.uid).child("from").setValue(ftime)
-                 //   dref!!.child("User").child(currentUser!!.uid).child("to").setValue(ttime)
-                //databaseReference!!.collection("User").whereEqualTo("to", to).setValue(ttime)
-               /* if (spotID == "BBA SPOT 1") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(1)
-                } else if (spotID == "BBA SPOT 2") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(2)
-                } else if (spotID == "BBA SPOT 3") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(3)
-                }
-                else if (spotID == "BBB SPOT 1") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(4)
-                } else if (spotID == "BBB SPOT 2") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(5)
-                } else if (spotID == "BBB SPOT 3") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(6)
-                } else if (spotID == "WC SPOT 1") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(7)
-                } else if (spotID == "WC SPOT 2") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(8)
-                } else if (spotID == "WC SPOT 3") {
-                    dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(9)
-
-                */
-
-
-
+            } else
+            {
                 dref!!.child("User").child(currentUser!!.uid).child("spotid").setValue(spotID)
                 if (!spotID.isNullOrEmpty()) {
-                    /*dref!!.child("Parking Lot").child(areaName.toString())
-                        .child("spotID").child(docId).child("Available").setValue(av - 1)
-                    dref!!.child("Parking Lot").child(areaName.toString())
-                        .child("spotID").child(docId).child("Booked").setValue(bk + 1)
-
-                     */
                     db.collection("Parking Lot").document(areaName.toString())
                         .collection("spotID").document(docId)
-                        .update("Available",FieldValue.increment(-1))
+                        .update("available",FieldValue.increment(-1))
                     db.collection("Parking Lot").document(areaName.toString())
                         .collection("spotID").document(docId)
-                        .update("Booked",FieldValue.increment(1))
+                        .update("booked",FieldValue.increment(1))
                 }
 
                 Toast.makeText(applicationContext, "SPOT RESERVED!", Toast.LENGTH_LONG).show()
@@ -143,69 +101,3 @@ class ReserveAvailableActivity : AppCompatActivity() {
         }
     }
 }
-
-/*
-        databaseReference!!.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                progressDialog.visibility = View.GONE
-                if (!areaName.isNullOrEmpty()) {
-                    val spot = dataSnapshot.child("Parking Lot").child(areaName).child("Available")
-                        .getValue(Int::class.java)!!
-                    Log.d("TAG", "onvaluereceival: $spot")
-                    area!!.text = Integer.toString(spot) + " Slots"
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                progressDialog.visibility = View.GONE
-                Log.e("TAG", "Failed to read value.")
-            }
-        })
-
-
-       /* val backButton = findViewById<View>(R.id.back) as Button
-        backButton.setOnClickListener {
-            val backIntent = Intent(this, ProfileActivity::class.java)
-            startActivity(backIntent)
-            finish()
-        }
-        val back1 = findViewById<View>(R.id.back1) as Button
-        back1.setOnClickListener {
-            val back = Intent(this, ListActivity::class.java)
-            startActivity(back)
-        }
-       /* val bookAndPay = findViewById<View>(R.id.booknpay) as Button
-        bookAndPay.setOnClickListener {
-            if (av == 0) {
-                Toast.makeText(
-                    applicationContext,
-                    "NO SLOTS AVAILABLE FOR BOOKING!",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                dref!!.child("User").child(currentUser!!.uid).child("from").setValue(ftime)
-                dref!!.child("User").child(currentUser!!.uid).child("to").setValue(ttime)
-                //databaseReference!!.collection("User").whereEqualTo("to", to).setValue(ttime)
-                if (areaName == "Benjamin Banneker A") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(1)
-                } else if (areaName == "Benjamin Banneker B") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(2)
-                } else if (areaName == "Welcome Center") {
-                    dref!!.child("User").child(currentUser!!.uid).child("loc").setValue(3)
-                }
-                if (!areaName.isNullOrEmpty()) {
-                    dref!!.child("Parking Lot").child(areaName).child("Available").setValue(av - 1)
-                    dref!!.child("Parking Lot").child(areaName).child("Booked").setValue(bk + 1)
-                }
-
-                Toast.makeText(applicationContext, "Booking Successful!", Toast.LENGTH_LONG).show()
-                val back = Intent(this, ProfileActivity::class.java)
-                startActivity(back)
-            }
-        }
-    }
-
-    override fun onBackPressed() {
-        finish()
-    }
-}*/

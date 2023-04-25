@@ -19,6 +19,8 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AreaAvailableActivity : AppCompatActivity() {
     var databaseReference: FirebaseFirestore? = null
@@ -38,6 +40,9 @@ class AreaAvailableActivity : AppCompatActivity() {
         val intent = intent
         val ftime = intent.getIntExtra("fromtime", 0)
         val ttime = intent.getIntExtra("totime", 0)
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        val current = formatter.format(time)
         val areaName = intent.getStringExtra("Area")
         //ftime?.let { Log.w("from", it.toString()) }
         //database = Firebase.database.reference
@@ -84,13 +89,14 @@ class AreaAvailableActivity : AppCompatActivity() {
                         for (doc in docs)
                         {
                             var ref = doc.reference
-                            ref.update(mapOf("from" to ftime, "to" to ttime, "loc" to areaName))
+                            ref.update(mapOf("from" to ftime, "to" to ttime, "loc" to areaName, "date" to current))
                         }
 
 
                 }
 
                 dref!!.child("User").child(currentUser!!.uid).child("from").setValue(ftime)
+                dref!!.child("User").child(currentUser!!.uid).child("date").setValue(current)
                 dref!!.child("User").child(currentUser!!.uid).child("to").setValue(ttime)
                 //databaseReference!!.collection("User").whereEqualTo("to", to).setValue(ttime)
                 if (areaName == "Benjamin Banneker A") {

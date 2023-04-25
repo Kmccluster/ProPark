@@ -17,12 +17,15 @@ import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
+import java.text.SimpleDateFormat
+import java.util.*
 
 class StatusActivity : AppCompatActivity() {
     private var currentuser: FirebaseUser? = null
     private var databaseUsers: DatabaseReference? = null
     var databaseReference: FirebaseFirestore? = null
-    private var progressDialog: ProgressBar? = null
+    //private var progressDialog: ProgressBar? = null
     private var user: User? = null
     private var xname: TextView? = null
     private var xemail: TextView? = null
@@ -30,10 +33,11 @@ class StatusActivity : AppCompatActivity() {
     private var xfrom: TextView? = null
     private var xtoo: TextView? = null
     private var tvLoc: TextView? = null
+    private var xdate: TextView? = null
     private var from: Int? = 0
     private var to: Int? = 0
 
-    @SuppressLint("CutPasteId")
+    @SuppressLint("CutPasteId", "MissingInflatedId", "SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Set the content of the activity to use the activity_main.xml layout file
@@ -44,10 +48,14 @@ class StatusActivity : AppCompatActivity() {
         xfrom = findViewById<View>(R.id.bookedfrom) as TextView
         xtoo = findViewById<View>(R.id.bookedto) as TextView
         tvLoc = findViewById<View>(R.id.location1) as TextView
-        progressDialog = findViewById(R.id.progressbar)
-        progressDialog = findViewById(R.id.progressbar2)
+        xdate = findViewById<View>(R.id.datecreated) as TextView
+        //progressDialog = findViewById(R.id.progressbar)
+      //  progressDialog = findViewById(R.id.progressbar2)
         currentuser = FirebaseAuth.getInstance().currentUser
         databaseReference = Firebase.firestore
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        var current = formatter.format(time)
         databaseReference!!.collection("User").whereEqualTo("uid", currentuser!!.uid).get()
             .addOnSuccessListener { documents ->
                 Log.w("docsLenght", documents.size().toString())
@@ -62,12 +70,12 @@ class StatusActivity : AppCompatActivity() {
                             user!!.phoneNumber?.let {
                                 Log.w("userObj", it)
                             }
-                            progressDialog?.visibility = View.GONE
-                            progressDialog?.visibility = View.GONE
-                            progressDialog?.visibility = View.GONE
-                            progressDialog?.visibility = View.GONE
-                            progressDialog?.visibility = View.GONE
-                            progressDialog?.visibility = View.GONE
+                         //   progressDialog?.visibility = View.GONE
+                         //   progressDialog?.visibility = View.GONE
+                          //  progressDialog?.visibility = View.GONE
+                         //   progressDialog?.visibility = View.GONE
+                          //  progressDialog?.visibility = View.GONE
+                         //   progressDialog?.visibility = View.GONE
 
                         }
 
@@ -78,23 +86,25 @@ class StatusActivity : AppCompatActivity() {
                             xfrom!!.text = user?.from.toString()
                             xtoo!!.text = user?.to.toString()
                             tvLoc!!.text = user?.loc ?: "Unable to load"
+                            xdate!!.text = current
 
-                        progressDialog?.visibility = View.GONE
-                        progressDialog?.visibility = View.GONE
-                        progressDialog?.visibility = View.GONE
-                        progressDialog?.visibility = View.GONE
-                        progressDialog?.visibility = View.GONE
-                        progressDialog?.visibility = View.GONE
+                      //  progressDialog?.visibility = View.GONE
+                      //  progressDialog?.visibility = View.GONE
+                       // progressDialog?.visibility = View.GONE
+                       // progressDialog?.visibility = View.GONE
+                      //  progressDialog?.visibility = View.GONE
+                       // progressDialog?.visibility = View.GONE
                         }
                         if (currentuser != null) {
                             databaseUsers = FirebaseDatabase.getInstance().reference
                         }
-                        val progressDialog: ProgressBar = findViewById(R.id.progressbar)
-                        val progressDialog2: ProgressBar = findViewById(R.id.progressbar2)
+                       // val progressDialog: ProgressBar = findViewById(R.id.progressbar)
+                       // val progressDialog2: ProgressBar = findViewById(R.id.progressbar2)
                         databaseUsers?.addValueEventListener(object : ValueEventListener {
+                            @SuppressLint("SetTextI18n")
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                progressDialog.visibility = View.GONE
-                                progressDialog2.visibility = View.GONE
+                              //  progressDialog.visibility = View.GONE
+                             //   progressDialog2.visibility = View.GONE
                                 val name =
                                     dataSnapshot.child("User").child(currentuser!!.uid)
                                         .child("name")
@@ -112,40 +122,47 @@ class StatusActivity : AppCompatActivity() {
                                     .getValue(Int::class.java) ?: 0
                                 to = dataSnapshot.child("User").child(currentuser!!.uid).child("to")
                                     .getValue(Int::class.java) ?: 0
+                                current =dataSnapshot.child("User").child(currentuser!!.uid).child("date")
+                                    .getValue(String::class.java) ?: "NA"
                                 val loc =
                                     dataSnapshot.child("User").child(currentuser!!.uid).child("loc")
                                         .getValue(Int::class.java) ?: 0
                                 xname!!.text = name
                                 xemail!!.text = email
                                 xphone!!.text = phone
+                                xdate!!.text = current
                                 if (from == 0 && to == 0) {
                                     tvLoc!!.text = getString(R.string.noBooking)
                                     xfrom!!.text = getString(R.string.noBooking)
                                     xtoo!!.text = getString(R.string.noBooking)
+                                    xdate!!.text = "No Booking"
                                 } else {
                                     when (loc) {
                                         1 -> {
                                             tvLoc!!.text = "Welcome Center"
                                             xfrom!!.text = "$from" + "Hrs"
                                             xtoo!!.text = """${to}Hrs"""
+                                            xdate!!.text = current
                                         }
                                         2 -> {
                                             tvLoc!!.text = "Benjamin Banneker A"
                                             xfrom!!.text = """${from}Hrs"""
                                             xtoo!!.text = """${to}Hrs"""
+                                            xdate!!.text = current
                                         }
                                         3 -> {
                                             tvLoc!!.text = "Benjamin Bannker B"
                                             xfrom!!.text = """${from}Hrs"""
                                             xtoo!!.text = "${to}Hrs"
+                                            xdate!!.text = current
                                         }
                                     }
                                 }
                             }
 
                             override fun onCancelled(databaseError: DatabaseError) {
-                                progressDialog.visibility = View.GONE
-                                progressDialog2.visibility = View.GONE
+                              //  progressDialog.visibility = View.GONE
+                              //  progressDialog2.visibility = View.GONE
                             }
 
                         })

@@ -60,30 +60,20 @@
             app:layout_constraintTop_toBottomOf="@+id/textView18"
             tools:layout_editor_absoluteX="32dp" />
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Phone Number:"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView19"
-            tools:layout_editor_absoluteX="32dp" />
-
         <Button
             android:id="@+id/backb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="162dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="180dp"
             android:layout_marginEnd="162dp"
             android:fontFamily="cursive"
             android:text="Back"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <TextView
             android:id="@+id/name"
@@ -110,19 +100,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView19"
             app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        <TextView
-            android:id="@+id/phoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="144dp"
-            android:text="TextView"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/email" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

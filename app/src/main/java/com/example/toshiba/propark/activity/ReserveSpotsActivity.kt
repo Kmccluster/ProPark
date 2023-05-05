@@ -40,7 +40,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spotone.setOnClickListener {
             val spotoneIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotoneIntent.putExtra("areaName", "Benjamin Banneker A")
-            spotoneIntent.putExtra("spotID", "BBA Spot 1")
+            spotoneIntent.putExtra("spotID", "spot1")
             spotoneIntent.putExtra("fromtime", ftime)
             spotoneIntent.putExtra("totime", ttime)
             startActivity(spotoneIntent)
@@ -49,7 +49,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
        spottwo.setOnClickListener {
             val spottwoIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
            spottwoIntent.putExtra("areaName", "Benjamin Banneker A")
-            spottwoIntent.putExtra("spotID", "BBA Spot 2")
+            spottwoIntent.putExtra("spotID", "spot2")
             spottwoIntent.putExtra("fromtime", f1)
             spottwoIntent.putExtra("totime", t1)
             startActivity(spottwoIntent)
@@ -58,7 +58,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spotthree.setOnClickListener {
             val spotthreeIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotthreeIntent.putExtra("areaName", "Benjamin Banneker A")
-            spotthreeIntent.putExtra("spotID", "BBA Spot 3")
+            spotthreeIntent.putExtra("spotID", "spot3")
             spotthreeIntent.putExtra("fromtime", f2)
             spotthreeIntent.putExtra("totime", t2)
             startActivity(spotthreeIntent)
@@ -67,7 +67,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spotfour.setOnClickListener {
         val spotfourIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotfourIntent.putExtra("areaName", "Benjamin Banneker B")
-            spotfourIntent.putExtra("spotID", "BBB SPOT 1")
+            spotfourIntent.putExtra("spotID", "spot1")
             spotfourIntent.putExtra("fromtime", f2)
             spotfourIntent.putExtra("totime", t2)
         startActivity(spotfourIntent)
@@ -76,7 +76,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spotfive.setOnClickListener {
             val spotfiveIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotfiveIntent.putExtra("areaName", "Benjamin Banneker B")
-            spotfiveIntent.putExtra("spotID", "BBB SPOT 2")
+            spotfiveIntent.putExtra("spotID", "spot2")
             spotfiveIntent.putExtra("fromtime", f2)
             spotfiveIntent.putExtra("totime", t2)
             startActivity(spotfiveIntent)
@@ -85,7 +85,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spotsix.setOnClickListener {
             val spotsixIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotsixIntent.putExtra("areaName", "Benjamin Banneker B")
-            spotsixIntent.putExtra("spotID", "BBB SPOT 3")
+            spotsixIntent.putExtra("spotID", "spot3")
             spotsixIntent.putExtra("fromtime", f2)
             spotsixIntent.putExtra("totime", t2)
             startActivity(spotsixIntent)
@@ -94,7 +94,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spotseven.setOnClickListener {
             val spotsevenIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotsevenIntent.putExtra("areaName", "Welcome Center")
-            spotsevenIntent.putExtra("spotID", "WC SPOT 1")
+            spotsevenIntent.putExtra("spotID", "spot1")
             spotsevenIntent.putExtra("fromtime", f2)
             spotsevenIntent.putExtra("totime", t2)
             startActivity(spotsevenIntent)
@@ -103,7 +103,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spoteight.setOnClickListener {
             val spoteightIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spoteightIntent.putExtra("areaName", "Welcome Center")
-            spoteightIntent.putExtra("spotID", "WC SPOT 2")
+            spoteightIntent.putExtra("spotID", "spot2")
             spoteightIntent.putExtra("fromtime", f2)
             spoteightIntent.putExtra("totime", t2)
             startActivity(spoteightIntent)
@@ -112,7 +112,7 @@ class ReserveSpotsActivity : AppCompatActivity() {
         spotnine.setOnClickListener {
             val spotnineIntent = Intent(this@ReserveSpotsActivity, ReserveAvailableActivity::class.java)
             spotnineIntent.putExtra("areaName", "Welcome Center")
-            spotnineIntent.putExtra("spotID", "WC SPOT 3")
+            spotnineIntent.putExtra("spotID", "spot3")
             spotnineIntent.putExtra("fromtime", f2)
             spotnineIntent.putExtra("totime", t2)
             startActivity(spotnineIntent)

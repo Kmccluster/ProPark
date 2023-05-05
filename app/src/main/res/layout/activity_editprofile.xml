@@ -154,10 +154,10 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/backx"
-            android:layout_width="129dp"
-            android:layout_height="48dp"
+            android:layout_width="85dp"
+            android:layout_height="45dp"
             android:layout_marginStart="140dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="79dp"
             android:background="@drawable/button_curved"
             android:fontFamily="cursive"
@@ -166,9 +166,10 @@
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/progressbar2"
-            app:layout_constraintHorizontal_bias="0.764"
+            app:layout_constraintHorizontal_bias="0.541"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateprofilebutton" />
+            app:layout_constraintTop_toBottomOf="@+id/deleteprofile"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView13"
@@ -235,7 +236,7 @@
             android:layout_width="101dp"
             android:layout_height="34dp"
             android:layout_marginStart="133dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="134dp"
             android:background="@drawable/button_curved"
             android:fontFamily="cursive"
@@ -243,9 +244,25 @@
             android:textColor="@color/white"
             android:textColorLink="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.518"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+            app:layout_constraintTop_toBottomOf="@+id/updatephone" />
+
+        <Button
+            android:id="@+id/deleteprofile"
+            android:layout_width="76dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="154dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="154dp"
+            android:background="@drawable/button_curved"
+            android:fontFamily="cursive"
+            android:text="Delete"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateprofilebutton"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

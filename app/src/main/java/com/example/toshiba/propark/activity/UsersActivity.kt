@@ -53,7 +53,6 @@ class UsersActivity : AppCompatActivity() {
         listusers = findViewById<View>(R.id.spinner) as Spinner?
         xname = findViewById<View>(R.id.name) as TextView
         xemail = findViewById<View>(R.id.email) as TextView
-        xphonenumber = findViewById<View>(R.id.phoneNumber) as TextView
         back = findViewById<View>(R.id.backb) as Button?
         progressDialog = findViewById(R.id.progressbar)
         progressDialog = findViewById(R.id.progressbar2)
@@ -92,7 +91,6 @@ class UsersActivity : AppCompatActivity() {
                         var selected = user
                         xname!!.text = user.name
                         xemail!!.text = user.email
-                        xphonenumber!!.text = user.phoneNumber
 
                     }
 

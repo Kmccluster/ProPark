@@ -53,6 +53,7 @@ class EditProfileActivity : AppCompatActivity() {
         etEmail = findViewById<View>(R.id.updateemail) as EditText?
         etPhone = findViewById<View>(R.id.updatephone) as EditText?
         updateprofile = findViewById(R.id.updateprofilebutton)
+        deleteprofilebutton = findViewById(R.id.deleteprofile)
         progressDialog = findViewById(R.id.progressbar)
         progressDialog = findViewById(R.id.progressbar2)
         currentuser = FirebaseAuth.getInstance().currentUser
@@ -101,7 +102,8 @@ class EditProfileActivity : AppCompatActivity() {
                             "email" to sEmail,
                             "phoneNumber" to sPhone
                         )
-                        databaseReference!!.collection("user").document(currentuser!!.uid).update(editMap)
+                        databaseReference!!.collection("user").document(currentuser!!.uid)
+                            .update(editMap)
 
 
 
@@ -119,7 +121,7 @@ class EditProfileActivity : AppCompatActivity() {
                     val progressDialog2: ProgressBar = findViewById(R.id.progressbar2)
                     databaseUsers?.addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(dataSnapshot: DataSnapshot) {
-                           // progressDialog.visibility = View.GONE
+                            // progressDialog.visibility = View.GONE
                             progressDialog2.visibility = View.GONE
                             val name =
                                 dataSnapshot.child("User").child(currentuser!!.uid)
@@ -134,46 +136,70 @@ class EditProfileActivity : AppCompatActivity() {
                                     .child("phoneNumber")
                                     .getValue(String::class.java) ?: "NA"
 
-                                    }
+                        }
 
 
                         override fun onCancelled(databaseError: DatabaseError) {
-                           // progressDialog.visibility = View.GONE
+                            // progressDialog.visibility = View.GONE
                             progressDialog2.visibility = View.GONE
                         }
 
                     })
-                    updateprofile!!.setOnClickListener {
-                         databaseReference!!.collection("User").whereEqualTo("uid", currentuser!!.uid).get().addOnSuccessListener { docs ->
-
-                           for (doc in docs)
-                          {
-                              val sName = etName!!.text.toString()
-                              val sEmail = etEmail!!.text.toString()
-                              val sPhone = etPhone!!.text.toString()
-                              xname!!.text = sName
-                              xemail!!.text = sEmail
-                              xphone!!.text = sPhone
-                              val ref = doc.reference
-                              ref.update(mapOf("name" to sName, "email" to sEmail, "phoneNumber" to sPhone))
-
-                          }
-                       // databaseReference!!.collection("user").document(currentuser!!.uid).update(editMap)
-                             dref!!.child("User").child(currentuser!!.uid).child("name").setValue(sName)
-                             dref!!.child("User").child(currentuser!!.uid).child("email").setValue(sEmail)
-                             dref!!.child("User").child(currentuser!!.uid).child("phoneNumber").setValue(sPhone)
-
-                        Toast.makeText(this, "Updated Successfully!", Toast.LENGTH_SHORT).show()
-
+                    deleteprofilebutton!!.setOnClickListener {
+                        databaseReference!!.collection("User")
+                            .whereEqualTo("uid", currentuser!!.uid).let { it1 ->
+                            databaseReference!!.collection("User").document(
+                                it1.toString()
+                            ).delete()
+                        //currentuser!!.uid.let { it1 ->
+                            //databaseReference!!.collection("User").document(
+                              //  it1
+                         //   ).delete()
+                            Toast.makeText(this, "Deleted Successfully!", Toast.LENGTH_SHORT)
+                                .show()
                         }
+                    updateprofile!!.setOnClickListener {
+                        databaseReference!!.collection("User")
+                            .whereEqualTo("uid", currentuser!!.uid).get()
+                            .addOnSuccessListener { docs ->
+
+                                for (doc in docs) {
+                                    val sName = etName!!.text.toString()
+                                    val sEmail = etEmail!!.text.toString()
+                                    val sPhone = etPhone!!.text.toString()
+                                    xname!!.text = sName
+                                    xemail!!.text = sEmail
+                                    xphone!!.text = sPhone
+                                    val ref = doc.reference
+                                    ref.update(
+                                        mapOf(
+                                            "name" to sName,
+                                            "email" to sEmail,
+                                            "phoneNumber" to sPhone
+                                        )
+                                    )
+
+                                }
+                                // databaseReference!!.collection("user").document(currentuser!!.uid).update(editMap)
+                                dref!!.child("User").child(currentuser!!.uid).child("name")
+                                    .setValue(sName)
+                                dref!!.child("User").child(currentuser!!.uid).child("email")
+                                    .setValue(sEmail)
+                                dref!!.child("User").child(currentuser!!.uid).child("phoneNumber")
+                                    .setValue(sPhone)
+
+                                Toast.makeText(this, "Updated Successfully!", Toast.LENGTH_SHORT)
+                                    .show()
+
+                            }
                     }
 
-                    val button2 = findViewById<View>(R.id.backx) as Button
-                    button2.setOnClickListener {
-                        val button2Intent = Intent(this, ProfileActivity::class.java)
-                        startActivity(button2Intent)
-                        finish()
-                    }
+                        val button2 = findViewById<View>(R.id.backx) as Button
+                        button2.setOnClickListener {
+                            val button2Intent = Intent(this, ProfileActivity::class.java)
+                            startActivity(button2Intent)
+                            finish()
+                        }
 
 
                     }
@@ -183,4 +209,5 @@ class EditProfileActivity : AppCompatActivity() {
                     finish()
                 }
             }
-    }
+
+    }}

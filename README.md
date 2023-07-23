@@ -6,10 +6,8 @@ Due to increased number of vehicles, the need for smart parking space is of utmo
 This parking system allows user a facility to book a parking space in advance therefore
 avoiding unnecessary wastage of time in finding appropriate parking space for your vehicle.
 
-## Team members
+##creator
 
 Keshaun McCluster
-Maurice Morten
-Celestina Kolog
-Marthe Edme
+
 
